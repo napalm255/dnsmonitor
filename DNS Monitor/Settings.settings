@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="DNSMonitor" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="dnsServers" Type="System.String" Scope="User">
+      <Value Profile="(Default)">209.244.0.3,8.8.8.8,8.26.56.26,208.67.222.222</Value>
+    </Setting>
+    <Setting Name="domainNames" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="dnsMatches" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="autoRefreshInterval" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">300</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
