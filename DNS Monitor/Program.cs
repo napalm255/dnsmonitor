@@ -575,7 +575,7 @@ namespace DNSMonitor
             else if (!menuItemAutoRefresh.Checked)
             {
                 menuItemAutoRefresh.Checked = true;
-                refreshTimer.Interval = Settings.Default.autoRefreshInterval * 1000;
+                refreshTimer.Interval = Settings.Default.autoRefreshInterval * 60000;
                 refreshTimer.Enabled = true;
                 refreshTimer.Start();
             }            
