@@ -142,24 +142,33 @@ namespace DNSMonitor
 
                     string matchedLocation = "";
                     string matchedIP = "";
+                    int mismatchCount = 0;
+                    int matchCount = 0;
                     var uniqueIPs = new HashSet<string>(ipResults);
-                    foreach (string s in uniqueIPs)
+                    int ipCount = ipResults.Count;
+                    foreach (string s in ipResults)
                     {
                         matchedIP = s;
                         foreach (KeyValuePair<string, List<string>> match in dnsMatches)
                         {
-                            if (match.Value.Contains(s))
+                            if (match.Value.Contains(matchedIP))
                             {
                                 matchedLocation = match.Key;
+                                matchCount++;
+                            }
+                            else
+                            {
+                                mismatchCount++;
                             }
                         }
                     }
 
                     Match matchKeyVal = Regex.Match(matchedLocation, @"^(.*)\:(.*)$");
+                    string matchStats = "(" + matchCount + "/" + ipCount + ")";
                     string matchLocation = matchKeyVal.Groups[1].Value;
                     string matchColor = matchKeyVal.Groups[2].Value;
 
-                    addPanel(matchLocation, dom, matchedIP, ipResults, matchColor);
+                    addPanel(matchLocation, matchStats, dom, matchedIP, ipResults, matchColor);
                 }
             }
             catch
@@ -316,7 +325,6 @@ namespace DNSMonitor
             txt4.Dock = DockStyle.Bottom;
             txt4.TabIndex = 0;
 
-
             /* ListBox Edit Method -- Work-in-Progress
             ListBox lst2 = new ListBox();
             ContextMenu lst2Context = new ContextMenu();
@@ -378,9 +386,8 @@ namespace DNSMonitor
             //initLocation();
         }
 
-        private void addPanel(string matchLocation, string Domain, string MatchedIP, List<string> AllIPs, string matchColor)
+        private void addPanel(string matchLocation, string matchStats, string Domain, string MatchedIP, List<string> AllIPs, string matchColor)
         {
-            
             // Color Breakdown
             string foreColor = "";
             string backColor = "";
@@ -419,7 +426,9 @@ namespace DNSMonitor
             lblL.Name = Guid.NewGuid().ToString();
             lblL.Dock = DockStyle.Fill;
             lblL.TextAlign = ContentAlignment.MiddleCenter;
-            lblL.Text = matchLocation.Trim();
+            string labelLocation = "";
+            if (matchLocation != "") { labelLocation = matchLocation.Trim() + "\n"; }
+            lblL.Text = labelLocation + matchStats.Trim();
             lblL.ForeColor = Color.Black;
             if (foreColor.Length > 0 ) { lblL.ForeColor = fColor; }
             lblL.BackColor = Color.White;
@@ -444,7 +453,9 @@ namespace DNSMonitor
             lbl_Tip.ToolTipIcon = ToolTipIcon.Info;
             lbl_Tip.ToolTipTitle = Domain.Trim().ToLower();
             string ToolTipText = "Last Query Time: \n\t" + DateTime.Now.ToString() + "\n";
-            ToolTipText += "Location: \n\t" + matchLocation.ToUpper().Trim() + "\n";
+            string toolTipLocation = "";
+            if (matchLocation != "") { toolTipLocation = matchLocation.Trim() + "\n\t"; }
+            ToolTipText += "Location: \n\t" + toolTipLocation + matchStats + "\n";
             ToolTipText += "Query Results: \n\t" + string.Join<string>("\n\t", AllIPs.ToArray()); 
             lbl_Tip.SetToolTip(lblR, ToolTipText);
             lbl_Tip.SetToolTip(lblL, ToolTipText);
