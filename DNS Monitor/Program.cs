@@ -245,11 +245,12 @@ namespace DNSMonitor
             lbl1.AutoSize = true;
             lbl1.TextAlign = ContentAlignment.MiddleLeft;
             lbl1.Dock = DockStyle.Fill;
-            lbl1.Text = "Auto Refresh Interval (s)";
+            lbl1.Text = "Auto Refresh Interval (min)";
             TextBox txt1 = new TextBox();
             txt1.Parent = set1;
             txt1.Name = "setting_txt_AutoRefreshInterval";
             txt1.Dock = DockStyle.Right;
+            txt1.Width = 75;
             txt1.TabIndex = 3;
 
             // Create DNS Server Setting
@@ -346,12 +347,16 @@ namespace DNSMonitor
             n.Size = new Size(0, 50);
             PictureBox picSettings = new PictureBox();
             picSettings.Parent = n;
+            picSettings.Name = "SettingsButton";
+            picSettings.Cursor = Cursors.Hand;
             picSettings.Dock = DockStyle.Left;
             picSettings.SizeMode = PictureBoxSizeMode.CenterImage;
             picSettings.Image = new Bitmap(GetType(), "img_settings.png");
             picSettings.Click += new System.EventHandler(this.settingsDisplay_Click);
             PictureBox picRefresh = new PictureBox();
             picRefresh.Parent = n;
+            picRefresh.Name = "RefreshButton";
+            picRefresh.Cursor = Cursors.Hand;
             picRefresh.Dock = DockStyle.Right;
             picRefresh.SizeMode = PictureBoxSizeMode.CenterImage;
             picRefresh.Image = new Bitmap(GetType(), "img_refresh.png");
@@ -499,7 +504,7 @@ namespace DNSMonitor
             // Auto-Refresh Interval
             int settingAutoRefreshInterval = Convert.ToInt32(this.Controls["Settings"].Controls["setting_panel_AutoRefreshInterval"].Controls["setting_txt_AutoRefreshInterval"].Text.Trim());
             Settings.Default.autoRefreshInterval = settingAutoRefreshInterval;
-            refreshTimer.Interval = Settings.Default.autoRefreshInterval * 1000;
+            refreshTimer.Interval = Settings.Default.autoRefreshInterval * 60000;
 
             // DNS Servers
             string dnsServers = this.Controls["Settings"].Controls["setting_panel_dnsServer"].Controls["setting_txt_dnsServer"].Text;
@@ -526,6 +531,7 @@ namespace DNSMonitor
                 // Open Settings Panel
                 this.Controls["Main"].Visible = false;
                 this.Controls["Settings"].Visible = true;
+                this.Controls["Links"].Controls["RefreshButton"].Visible = false;
                 settingsLoad();
             }
             else if (this.Controls["Settings"].Visible)
@@ -533,7 +539,9 @@ namespace DNSMonitor
                 // Open Main Panel
                 this.Controls["Main"].Visible = true;
                 this.Controls["Settings"].Visible = false;
+                this.Controls["Links"].Controls["RefreshButton"].Visible = true;
                 settingsUpdate();
+                queryDNS();
             }
         }
 
