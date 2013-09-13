@@ -353,6 +353,22 @@ namespace DNSMonitor
             n.BorderStyle = BorderStyle.FixedSingle;
             n.Dock = DockStyle.Bottom;
             n.Size = new Size(0, 50);
+            PictureBox picRefresh = new PictureBox();
+            picRefresh.Parent = n;
+            picRefresh.Name = "RefreshButton";
+            picRefresh.Cursor = Cursors.Hand;
+            picRefresh.Dock = DockStyle.Left;
+            picRefresh.SizeMode = PictureBoxSizeMode.CenterImage;
+            picRefresh.Image = new Bitmap(GetType(), "img_refresh.png");
+            picRefresh.Click += new System.EventHandler(this.refreshDisplay_Click);
+            PictureBox picHelp = new PictureBox();
+            picHelp.Parent = n;
+            picHelp.Name = "HelpButton";
+            picHelp.Cursor = Cursor = Cursors.Hand;
+            picHelp.Dock = DockStyle.Left;
+            picHelp.SizeMode = PictureBoxSizeMode.CenterImage;
+            picHelp.Image = new Bitmap(GetType(), "img_help.png");
+            picHelp.Click += new EventHandler(picHelp_Click);
             PictureBox picSettings = new PictureBox();
             picSettings.Parent = n;
             picSettings.Name = "SettingsButton";
@@ -361,14 +377,12 @@ namespace DNSMonitor
             picSettings.SizeMode = PictureBoxSizeMode.CenterImage;
             picSettings.Image = new Bitmap(GetType(), "img_settings.png");
             picSettings.Click += new System.EventHandler(this.settingsDisplay_Click);
-            PictureBox picRefresh = new PictureBox();
-            picRefresh.Parent = n;
-            picRefresh.Name = "RefreshButton";
-            picRefresh.Cursor = Cursors.Hand;
-            picRefresh.Dock = DockStyle.Right;
-            picRefresh.SizeMode = PictureBoxSizeMode.CenterImage;
-            picRefresh.Image = new Bitmap(GetType(), "img_refresh.png");
-            picRefresh.Click += new System.EventHandler(this.refreshDisplay_Click);
+        }
+
+        void picHelp_Click(object sender, EventArgs e)
+        {
+            aboutBox aBox = new aboutBox();
+            aBox.Show();
         }
 
         void lst2Delete_Click(object sender, EventArgs e)
