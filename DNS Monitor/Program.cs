@@ -470,6 +470,7 @@ namespace DNSMonitor
                 {
                     this.Show();
                     this.WindowState = FormWindowState.Normal;
+                    initLocation();
                     queryDNS();
                 }
                 else
