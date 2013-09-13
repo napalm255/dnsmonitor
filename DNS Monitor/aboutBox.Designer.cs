@@ -28,45 +28,35 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.labelVersion = new System.Windows.Forms.Label();
+            this.labelProductName = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.textBoxDescription = new System.Windows.Forms.TextBox();
-            this.labelProductName = new System.Windows.Forms.Label();
-            this.labelVersion = new System.Windows.Forms.Label();
+            this.labelAuthor = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.labelAuthor);
             this.panel1.Controls.Add(this.labelVersion);
             this.panel1.Controls.Add(this.labelProductName);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(9, 9);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(417, 52);
+            this.panel1.Size = new System.Drawing.Size(417, 69);
             this.panel1.TabIndex = 0;
             // 
-            // panel2
+            // labelVersion
             // 
-            this.panel2.Controls.Add(this.textBoxDescription);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(9, 61);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(417, 213);
-            this.panel2.TabIndex = 1;
-            // 
-            // textBoxDescription
-            // 
-            this.textBoxDescription.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxDescription.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxDescription.Location = new System.Drawing.Point(0, 0);
-            this.textBoxDescription.Multiline = true;
-            this.textBoxDescription.Name = "textBoxDescription";
-            this.textBoxDescription.ReadOnly = true;
-            this.textBoxDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxDescription.Size = new System.Drawing.Size(417, 213);
-            this.textBoxDescription.TabIndex = 0;
-            this.textBoxDescription.TabStop = false;
+            this.labelVersion.Dock = System.Windows.Forms.DockStyle.Top;
+            this.labelVersion.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelVersion.Location = new System.Drawing.Point(0, 20);
+            this.labelVersion.Name = "labelVersion";
+            this.labelVersion.Size = new System.Drawing.Size(417, 20);
+            this.labelVersion.TabIndex = 1;
+            this.labelVersion.Text = "labelVersion";
             // 
             // labelProductName
             // 
@@ -78,15 +68,37 @@
             this.labelProductName.TabIndex = 0;
             this.labelProductName.Text = "labelProductName";
             // 
-            // labelVersion
+            // panel2
             // 
-            this.labelVersion.Dock = System.Windows.Forms.DockStyle.Top;
-            this.labelVersion.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelVersion.Location = new System.Drawing.Point(0, 20);
-            this.labelVersion.Name = "labelVersion";
-            this.labelVersion.Size = new System.Drawing.Size(417, 20);
-            this.labelVersion.TabIndex = 1;
-            this.labelVersion.Text = "labelVersion";
+            this.panel2.Controls.Add(this.textBoxDescription);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(9, 78);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(417, 196);
+            this.panel2.TabIndex = 1;
+            // 
+            // textBoxDescription
+            // 
+            this.textBoxDescription.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxDescription.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxDescription.Location = new System.Drawing.Point(0, 0);
+            this.textBoxDescription.Multiline = true;
+            this.textBoxDescription.Name = "textBoxDescription";
+            this.textBoxDescription.ReadOnly = true;
+            this.textBoxDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBoxDescription.Size = new System.Drawing.Size(417, 196);
+            this.textBoxDescription.TabIndex = 0;
+            this.textBoxDescription.TabStop = false;
+            // 
+            // labelAuthor
+            // 
+            this.labelAuthor.Dock = System.Windows.Forms.DockStyle.Top;
+            this.labelAuthor.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAuthor.Location = new System.Drawing.Point(0, 40);
+            this.labelAuthor.Name = "labelAuthor";
+            this.labelAuthor.Size = new System.Drawing.Size(417, 20);
+            this.labelAuthor.TabIndex = 2;
+            this.labelAuthor.Text = "labelAuthor";
             // 
             // aboutBox
             // 
@@ -119,6 +131,7 @@
         private System.Windows.Forms.TextBox textBoxDescription;
         private System.Windows.Forms.Label labelProductName;
         private System.Windows.Forms.Label labelVersion;
+        private System.Windows.Forms.Label labelAuthor;
 
     }
 }

@@ -17,6 +17,7 @@ namespace DNSMonitor
             this.Text = String.Format("About {0}", AssemblyTitle);
             this.labelProductName.Text = String.Format("Product Name: {0}", AssemblyProduct);
             this.labelVersion.Text = String.Format("Version {0}", AssemblyVersion);
+            this.labelAuthor.Text = String.Format("Written By: Brad Gibson");
             this.textBoxDescription.Text = @"======================== SYNTAX ========================
   DNS Servers:
     x.x.x.x, y.y.y.y, z.z.z.z
